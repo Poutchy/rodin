@@ -5,6 +5,14 @@ pub struct Play {
     pub cards: Vec<Card>
 }
 
+impl Default for Play {
+    fn default() -> Self {
+        Play {
+            cards: Vec::new()
+        }
+    }
+}
+
 impl PartialOrd for Play {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
         Some(self.cmp(other))
@@ -23,5 +31,12 @@ impl Ord for Play {
         }
 
         selfres.cmp(&otherres)
+    }
+}
+
+impl Play {
+    pub fn add_card(&mut self, card: Card) {
+        self.cards.push(card);
+        self.cards.sort_by(|a, b| b.cmp(a));
     }
 }
