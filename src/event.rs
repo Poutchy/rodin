@@ -1,12 +1,6 @@
 use color_eyre::eyre::OptionExt;
-use futures::{
-    FutureExt,
-    StreamExt
-};
-use crossterm::event::{
-    Event as CrosstermEvent,
-    EventStream
-};
+use crossterm::event::{Event as CrosstermEvent, EventStream};
+use futures::{FutureExt, StreamExt};
 use std::time::Duration;
 use tokio::sync::mpsc;
 

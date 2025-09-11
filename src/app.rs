@@ -1,11 +1,7 @@
 use crate::event::{AppEvent, Event, EventHandler};
 use ratatui::{
     DefaultTerminal,
-    crossterm::event::{
-        KeyCode,
-        KeyEvent,
-        KeyModifiers
-    },
+    crossterm::event::{KeyCode, KeyEvent, KeyModifiers},
 };
 
 /// Application.
@@ -41,10 +37,11 @@ impl App {
             terminal.draw(|frame| frame.render_widget(&self, frame.area()))?;
             match self.events.next().await? {
                 Event::Tick => self.tick(),
-                Event::Crossterm(event) => match event {
-                    ratatui::crossterm::event::Event::Key(key_event) => self.handle_key_events(key_event)?,
-                    _ => {}
-                },
+                Event::Crossterm(event) => {
+                    if let ratatui::crossterm::event::Event::Key(key_event) = event {
+                        self.handle_key_events(key_event)?
+                    }
+                }
                 Event::App(app_event) => match app_event {
                     AppEvent::Increment => self.increment_counter(),
                     AppEvent::Decrement => self.decrement_counter(),

@@ -7,12 +7,11 @@ pub struct Hand {
     pub cards: Vec<Card>,
 }
 
-impl Hand
-{
+impl Hand {
     pub fn add_card(&mut self, card: Card) -> Result<usize, ()> {
         if self.cards.len() >= MAX_SIZE {
             return Err(());
-        } 
+        }
         self.cards.push(card);
         Ok(self.cards.len())
     }
@@ -61,7 +60,7 @@ impl Hand
 
     pub fn is_playable(&mut self, chosen_cards: Vec<usize>) -> Result<(), ()> {
         if chosen_cards.len() < 1 {
-            return Err(())
+            return Err(());
         }
 
         let card_value = (self.cards[chosen_cards[0]]).value;
@@ -83,7 +82,7 @@ impl Hand
         }
 
         if !order_on_colors && !order_on_values {
-            return Err(())
+            return Err(());
         }
         Ok(())
     }

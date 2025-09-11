@@ -12,10 +12,12 @@ pub fn deck() -> Vec<Card> {
 
     for card_color in card_colors.iter() {
         for value in 1..=9 {
-            cards.push(Card { value, card_color: *card_color });
+            cards.push(Card {
+                value,
+                card_color: *card_color,
+            });
         }
     }
 
     cards
 }
-

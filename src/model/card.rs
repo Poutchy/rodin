@@ -3,12 +3,10 @@ use super::card_color::CardColor;
 #[derive(Clone, Copy, Debug)]
 pub struct Card {
     pub value: i32,
-    pub card_color: CardColor
+    pub card_color: CardColor,
 }
 
-impl Eq for Card {
-}
-
+impl Eq for Card {}
 
 impl PartialEq for Card {
     fn eq(&self, other: &Self) -> bool {

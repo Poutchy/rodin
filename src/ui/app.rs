@@ -37,4 +37,3 @@ impl Widget for &App {
         paragraph.render(area, buf);
     }
 }
-

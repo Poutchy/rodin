@@ -1,16 +1,8 @@
 use super::card::Card;
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Play {
-    pub cards: Vec<Card>
-}
-
-impl Default for Play {
-    fn default() -> Self {
-        Play {
-            cards: Vec::new()
-        }
-    }
+    pub cards: Vec<Card>,
 }
 
 impl PartialOrd for Play {
