@@ -1,7 +1,11 @@
 use crate::event::{AppEvent, Event, EventHandler};
 use ratatui::{
     DefaultTerminal,
-    crossterm::event::{KeyCode, KeyEvent, KeyModifiers},
+    crossterm::event::{
+        KeyCode,
+        KeyEvent,
+        KeyModifiers
+    },
 };
 
 /// Application.
@@ -38,7 +42,7 @@ impl App {
             match self.events.next().await? {
                 Event::Tick => self.tick(),
                 Event::Crossterm(event) => match event {
-                    crossterm::event::Event::Key(key_event) => self.handle_key_events(key_event)?,
+                    ratatui::crossterm::event::Event::Key(key_event) => self.handle_key_events(key_event)?,
                     _ => {}
                 },
                 Event::App(app_event) => match app_event {
